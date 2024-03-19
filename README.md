@@ -10,7 +10,8 @@
 
 ## About Discography
 
-Discography is an API that allows users to CRUD albums and tracks. It is built using the Laravel framework v11
+Discography is an API that allows users to CRUD albums and tracks. It is built using the Laravel framework v11.
+**No starter kit is used; the API is built from scratch. Angular is chosen as the front-end JS framework because it is the bundle used in CodiTramuntana's current project, which is related to the job vacancy.**
 
 ## Requirements
 
