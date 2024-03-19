@@ -21,6 +21,6 @@ class Artist extends Model
 
     public function LPs()
     {
-        return $this->hasMany('App\Models\LP');
+        return $this->hasMany('App\Models\V1\LP');
     }
 }

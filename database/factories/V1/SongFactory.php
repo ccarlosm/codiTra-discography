@@ -19,7 +19,7 @@ class SongFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->unique()->name(),
+            'title' => $this->faker->unique()->name(),
         ];
     }
 }

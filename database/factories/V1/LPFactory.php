@@ -26,7 +26,7 @@ class LPFactory extends Factory
         }
 
         return [
-            'name' => $this->faker->name,
+            'title' => $this->faker->name,
             'year' => $this->faker->year,
             'artist_id' => $artist->id
         ];

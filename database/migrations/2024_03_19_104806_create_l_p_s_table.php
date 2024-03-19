@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('l_p_s', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->default('')->index('title');
+            $table->string('title')->default('')->index('l_p_s_title');
             $table->year('year')->index('year');
             $table->unsignedBigInteger('artist_id')->index('artist_id');
             $table->timestamps();
