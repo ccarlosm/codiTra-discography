@@ -57,6 +57,11 @@ The user created with the Database seeder has the following credentials:
 - email: test@example.com
 - password: 123456
 
+## Testing
+
+Run the tests with `./vendor/bin/sail test --parallel`
+The tests will be set up in a dedicated github action to be run in every pull request. See folder `.github/workflows` for more information.
+
 ## Comments
 
 In a different and more complex case it would be interesting to add idempotency to the API to handle repetitive requests.
