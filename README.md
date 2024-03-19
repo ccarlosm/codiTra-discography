@@ -14,14 +14,17 @@ Discography is an API that allows users to CRUD albums and tracks. It is built u
 
 ## Requirements
 
-PHP 8.2 or higher
-Composer
-Docker
+- PHP: Version 8.2 or higher.
+- Composer: Version 2.x. Must be installed globally and accessible via the composer command.
+- Docker:
+* For Windows and Mac users: Docker Desktop 25.0 or higher. Docker Desktop includes Docker Compose, which is required for running Laravel Sail.
+* For Linux users: Docker 25.0 or higher and Docker Compose. While Docker Desktop is not available for Linux, Docker Compose must be installed separately to work with Laravel Sail. Please follow the official Docker documentation to ensure Docker Compose is installed on your Linux system.
 
 ## Installation
 
 1. Clone the repository
-2. Run `composer install` to install the dependencies
+2. Run `install.sh` to install and start the docker containers with Laravel Sail
+2. Run `bootstrap.sh` to run migrations and seeders
 
 ## Deployment
 
