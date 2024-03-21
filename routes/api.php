@@ -23,17 +23,17 @@ Route::post('/login', [LoginController::class, 'createToken']);
 Route::group(['prefix' => 'v1', 'as' => 'api.v1.'], function () {
 
     //Artist
-    Route::resource('artist', ArtistController::class);
+    Route::resource('artists', ArtistController::class);
 
     //Author
-    Route::resource('author', AuthorController::class);
+    Route::resource('authors', AuthorController::class);
 
     //LP
-    Route::resource('lp', LPController::class);
+    Route::resource('lps', LPController::class);
 
     //Song
-    Route::resource('song', SongController::class);
+    Route::resource('songs', SongController::class);
 
     //SongAuthor
-    Route::resource('song_author', SongAuthorController::class);
+    Route::resource('song_authors', SongAuthorController::class);
 });

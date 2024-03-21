@@ -22,8 +22,8 @@ class BaseController extends Controller
     public function index(Request $request)
     {
         //Ordering
-        $order_by_field = $request->has('order_by')?$request->order_by:'id';
-        $order_by_direction = $request->has('direction')?$request->direction:'asc';
+        $order_by_field = $request->has('order_by') ? $request->order_by : 'id';
+        $order_by_direction = $request->has('direction') ? $request->direction : 'asc';
 
         // Ensure the order is safe and matches one of the columns in the table
         $order_by_field = in_array($order_by_field, $this->modelClass::getModel()->getConnection()->getSchemaBuilder()->getColumnListing($this->modelClass::getModel()->getTable())) ? $order_by_field : 'id';
