@@ -1,12 +1,10 @@
 <?php
 
-namespace Tests\Feature\Http\Controllers;
+namespace API\V1\Http\Controllers;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class SongControllerTest extends TestCase
+class AuthorControllerTest extends TestCase
 {
     /**
      * A basic feature test example.

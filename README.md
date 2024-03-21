@@ -8,9 +8,17 @@
 6. [Comments](#comments)
 7. [License](#license)
 
-## About Discography
+## About Discography Laravel API
 
-Discography is an API that allows users to CRUD albums and tracks. It is built using the Laravel framework v11
+This repository is an API that allows users to CRUD artists and LPs and to list models resources.
+Database SQLite 3.
+It is built using the Laravel framework v11:
+- Laravel Fortify for login/registration routes
+- Laravel Sanctum for API authentication
+- Laravel Sail for docker containers
+- PHPUnit for testing
+**No starter kit is used; the API is built from scratch.** 
+**Angular is chosen as the front-end JS framework because it is the bundle used in CodiTramuntana's current project, which is related to the job vacancy.**
 
 ## Requirements
 
@@ -32,25 +40,7 @@ The API uses Laravel Sail to deploy in docker containers. To start the server, r
 
 ## Usage
 
-The API has the following endpoints:
-
-- GET /albums
-- GET /albums/{id}
-- POST /albums
-- PUT /albums/{id}
-- DELETE /albums/{id}
-- GET /albums/{id}/tracks
-- GET /albums/{id}/tracks/{track_id}
-- POST /albums/{id}/tracks
-- PUT /albums/{id}/tracks/{track_id} 
-- DELETE /albums/{id}/tracks/{track_id}
-- POST /register
-- POST /login
-- POST /logout
-- GET /user
-- PUT /user
-- DELETE /user
-- ....
+You can see a list of the routes with command: ./vendor/bin/sail artisan route:list
 
 The user created with the Database seeder has the following credentials:
 - name: Test User
@@ -60,7 +50,7 @@ The user created with the Database seeder has the following credentials:
 ## Testing
 
 Run the tests with `./vendor/bin/sail test --parallel`
-The tests will be set up in a dedicated github action to be run in every pull request. See folder `.github/workflows` for more information.
+The tests are set up in a github action to implement CI/CD in the API. See folder `.github/workflows` for more information.
 
 ## Comments
 
