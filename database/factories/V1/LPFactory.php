@@ -26,8 +26,8 @@ class LPFactory extends Factory
         }
 
         return [
-            'title' => $this->faker->name,
-            'year' => $this->faker->year,
+            'title' => 'LP - ' . $this->faker->sentence($nbWords = 3, $variableNbWords = true),
+            'description' => $this->faker->text(200),
             'artist_id' => $artist->id,
         ];
     }

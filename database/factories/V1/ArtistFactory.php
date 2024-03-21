@@ -19,6 +19,7 @@ class ArtistFactory extends Factory
     {
         return [
             'name' => $this->faker->unique()->name(),
+            'description' => $this->faker->text(200),
         ];
     }
 }
