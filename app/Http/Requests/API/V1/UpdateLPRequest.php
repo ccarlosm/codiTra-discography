@@ -22,7 +22,7 @@ class UpdateLPRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255|unique:App\Models\API\V1\LP,title,'.$this->LP->id,
+            'title' => 'required|string|max:255|unique:App\Models\V1\LP,title,'.$this->LP,
             'description' => 'required|string|max:255',
         ];
     }

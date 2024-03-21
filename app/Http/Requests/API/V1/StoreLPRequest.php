@@ -22,7 +22,7 @@ class StoreLPRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255|unique:App\Models\API\V1\LP',
+            'title' => 'required|string|max:255|unique:App\Models\V1\LP',
             'description' => 'required|string|max:255',
         ];
     }

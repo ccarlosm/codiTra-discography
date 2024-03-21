@@ -22,7 +22,7 @@ class StoreArtistRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255|unique:App\Models\API\V1\Artist',
+            'name' => 'required|string|max:255|unique:App\Models\V1\Artist',
             'description' => 'required|string|max:255',
         ];
     }

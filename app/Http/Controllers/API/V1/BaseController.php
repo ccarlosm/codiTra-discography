@@ -38,8 +38,11 @@ class BaseController extends Controller
 
     public function store(Request $request)
     {
+
         $requestClass = app($this->storeRequestClass);
+
         $validated = $requestClass->validated();
+
         $model = $this->modelClass::create($validated);
 
         return $this->handleResponse(new $this->resourceClass($model), 'Resource created successfully');
