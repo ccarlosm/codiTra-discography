@@ -19,36 +19,12 @@ class BaseController extends Controller
 
     protected $updateRequestClass = Request::class; // Default, should be overridden in child controllers
 
-    public function handleResponse($result, $msg, $code = 200): Response|JsonResponse
-    {
-        $res = [
-            'success' => true,
-            'data' => $result,
-            'message' => $msg,
-        ];
-
-        return response()->json($res, $code);
-    }
-
-    public function handleError($error, $errorMsg = [], $code = 404): Response|JsonResponse
-    {
-        $res = [
-            'success' => false,
-            'message' => $error,
-        ];
-        if (! empty($errorMsg)) {
-            $res['data'] = $errorMsg;
-        }
-
-        return response()->json($res, $code);
-    }
-
     public function index(Request $request)
     {
-        $per_page = min(config('your_app_config.per_page_limit'), intval($request->per_page));
+        $per_page = min(config('discography.per_page_limit'), (int) $request->input('per_page', 15));
         $model = $this->modelClass::paginate($per_page);
 
-        return $this->handleResponse(new $this->resourceClass($model), 'List of resources fetched successfully');
+        return new $this->resourceClass($model); // Assuming $this->resourceClass is now pointing to your collection resource
     }
 
     public function store(Request $request)
@@ -83,5 +59,29 @@ class BaseController extends Controller
         $model->delete();
 
         return $this->handleResponse(new DeletedDefaultResource($model), 'Resource deleted successfully');
+    }
+
+    public function handleResponse($result, $msg, $code = 200): Response|JsonResponse
+    {
+        $res = [
+            'success' => true,
+            'data' => $result,
+            'message' => $msg,
+        ];
+
+        return response()->json($res, $code);
+    }
+
+    public function handleError($error, $errorMsg = [], $code = 404): Response|JsonResponse
+    {
+        $res = [
+            'success' => false,
+            'message' => $error,
+        ];
+        if (! empty($errorMsg)) {
+            $res['data'] = $errorMsg;
+        }
+
+        return response()->json($res, $code);
     }
 }
