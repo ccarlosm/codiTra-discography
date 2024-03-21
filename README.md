@@ -40,25 +40,7 @@ The API uses Laravel Sail to deploy in docker containers. To start the server, r
 
 ## Usage
 
-The API has the following endpoints:
-
-- GET /albums
-- GET /albums/{id}
-- POST /albums
-- PUT /albums/{id}
-- DELETE /albums/{id}
-- GET /albums/{id}/tracks
-- GET /albums/{id}/tracks/{track_id}
-- POST /albums/{id}/tracks
-- PUT /albums/{id}/tracks/{track_id} 
-- DELETE /albums/{id}/tracks/{track_id}
-- POST /register
-- POST /login
-- POST /logout
-- GET /user
-- PUT /user
-- DELETE /user
-- ....
+You can see a list of the routes with command: ./vendor/bin/sail artisan route:list
 
 The user created with the Database seeder has the following credentials:
 - name: Test User

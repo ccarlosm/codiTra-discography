@@ -17,7 +17,7 @@ class SongAuthor extends Model
      */
     protected $fillable = [
         'song_id',
-        'author_id'
+        'author_id',
     ];
 
     public function song()

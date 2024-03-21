@@ -21,14 +21,14 @@ class LPFactory extends Factory
         //Get the artists and choose the artist with fewer songs
         $artist = Artist::withCount('LPs')->orderBy('LPs_count', 'asc')->first();
 
-        if (!$artist) {
+        if (! $artist) {
             $artist = Artist::factory()->create();
         }
 
         return [
             'title' => $this->faker->name,
             'year' => $this->faker->year,
-            'artist_id' => $artist->id
+            'artist_id' => $artist->id,
         ];
     }
 }

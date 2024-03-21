@@ -2,7 +2,6 @@
 
 namespace Database\Factories\V1;
 
-use App\Models\V1\Author;
 use App\Models\V1\Song;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

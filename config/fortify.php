@@ -73,7 +73,7 @@ return [
     |
     */
 
-    'home' => '/home',
+    'home' => '/',
 
     /*
     |--------------------------------------------------------------------------
@@ -86,7 +86,7 @@ return [
     |
     */
 
-    'prefix' => '',
+    'prefix' => 'api',
 
     'domain' => null,
 
@@ -101,7 +101,7 @@ return [
     |
     */
 
-    'middleware' => ['web'],
+    'middleware' => ['api'],
 
     /*
     |--------------------------------------------------------------------------
@@ -149,11 +149,11 @@ return [
         // Features::emailVerification(),
         Features::updateProfileInformation(),
         Features::updatePasswords(),
-        Features::twoFactorAuthentication([
-            'confirm' => true,
-            'confirmPassword' => true,
-            // 'window' => 0,
-        ]),
+        //Features::twoFactorAuthentication([
+        //    'confirm' => true,
+        //    'confirmPassword' => true,
+        //    // 'window' => 0,
+        //]),
     ],
 
 ];

@@ -24,6 +24,7 @@ class SongAuthorFactory extends Factory
                 'author_id' => Author::random()->id,
             ];
         }
+
         return [];
     }
 }
