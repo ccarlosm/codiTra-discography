@@ -1,5 +1,3 @@
-//Create index for the README file
-
 1. [About Discography](#about-discography-laravel-api)
 2. [Requirements](#requirements)
 3. [Installation](#installation)
