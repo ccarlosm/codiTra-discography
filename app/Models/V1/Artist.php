@@ -9,6 +9,8 @@ class Artist extends BaseModel
 {
     use HasApiTokens, HasFactory;
 
+    protected $table = 'artists';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -16,7 +18,7 @@ class Artist extends BaseModel
      */
     protected $fillable = [
         'name',
-        'description'
+        'description',
     ];
 
     public function LPs()

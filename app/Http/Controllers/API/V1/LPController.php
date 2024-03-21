@@ -9,6 +9,8 @@ use App\Models\V1\LP;
 class LPController extends BaseController
 {
     protected $modelClass = LP::class;
+
     protected $storeRequestClass = StoreLPRequest::class;
+
     protected $updateRequestClass = UpdateLPRequest::class;
 }

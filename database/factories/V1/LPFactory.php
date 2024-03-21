@@ -18,15 +18,14 @@ class LPFactory extends Factory
      */
     public function definition(): array
     {
-        //Get the artists and choose the artist with fewer songs
-        $artist = Artist::withCount('LPs')->orderBy('LPs_count', 'asc')->first();
+        $artist = Artist::inRandomOrder()->first();
 
         if (! $artist) {
             $artist = Artist::factory()->create();
         }
 
         return [
-            'title' => 'LP - ' . $this->faker->sentence($nbWords = rand(2,4), $variableNbWords = true),
+            'title' => 'LP - '.$this->faker->sentence($nbWords = rand(2, 4), $variableNbWords = true),
             'description' => $this->faker->text(200),
             'artist_id' => $artist->id,
         ];

@@ -9,6 +9,8 @@ use App\Models\V1\Author;
 class AuthorController extends BaseController
 {
     protected $modelClass = Author::class;
+
     protected $storeRequestClass = StoreAuthorRequest::class;
+
     protected $updateRequestClass = UpdateAuthorRequest::class;
 }

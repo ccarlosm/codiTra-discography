@@ -16,7 +16,7 @@ class LP extends BaseModel
      */
     protected $fillable = [
         'title',
-        'description'
+        'description',
     ];
 
     public function artist()

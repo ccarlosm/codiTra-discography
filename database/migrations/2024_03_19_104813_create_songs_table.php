@@ -14,7 +14,13 @@ return new class extends Migration
         Schema::create('songs', function (Blueprint $table) {
             $table->id();
             $table->string('title')->default('')->index('songs_title');
+            $table->unsignedBigInteger('l_p_id')->index('l_p_id');
             $table->timestamps();
+        });
+
+        //Create foreign key
+        Schema::table('l_p_s', function (Blueprint $table) {
+            $table->foreign('l_p_id', 'songs_l_p_id_foreign')->references('id')->on('l_p_s')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

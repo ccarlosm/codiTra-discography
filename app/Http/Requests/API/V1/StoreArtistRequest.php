@@ -23,7 +23,7 @@ class StoreArtistRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255|unique:App\Models\API\V1\Artist',
-            'description' => 'required|string|max:255'
+            'description' => 'required|string|max:255',
         ];
     }
 }

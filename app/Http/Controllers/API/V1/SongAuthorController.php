@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 class SongAuthorController extends BaseController
 {
     protected $modelClass = SongAuthor::class;
+
     protected $storeRequestClass = StoreSongAuthorRequest::class;
 
     public function update(Request $request, $id)

@@ -23,7 +23,7 @@ class StoreLPRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255|unique:App\Models\API\V1\LP',
-            'description' => 'required|string|max:255'
+            'description' => 'required|string|max:255',
         ];
     }
 }

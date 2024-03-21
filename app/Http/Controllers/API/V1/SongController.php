@@ -9,6 +9,8 @@ use App\Models\V1\Song;
 class SongController extends BaseController
 {
     protected $modelClass = Song::class;
+
     protected $storeRequestClass = StoreSongRequest::class;
+
     protected $updateRequestClass = UpdateSongRequest::class;
 }
