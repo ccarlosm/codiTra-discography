@@ -19,7 +19,7 @@ class SongFactory extends Factory
     {
         // Generate a more song-like title using a combination of faker methods
         return [
-            'title' => 'Song - ' . $this->faker->sentence($nbWords = 3, $variableNbWords = true),
+            'title' => 'Song - ' . $this->faker->sentence($nbWords = rand(3,7), $variableNbWords = true),
         ];
     }
 }

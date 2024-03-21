@@ -26,7 +26,7 @@ class LPFactory extends Factory
         }
 
         return [
-            'title' => 'LP - ' . $this->faker->sentence($nbWords = 3, $variableNbWords = true),
+            'title' => 'LP - ' . $this->faker->sentence($nbWords = rand(2,4), $variableNbWords = true),
             'description' => $this->faker->text(200),
             'artist_id' => $artist->id,
         ];
