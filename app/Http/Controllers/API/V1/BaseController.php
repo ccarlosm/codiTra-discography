@@ -21,8 +21,17 @@ class BaseController extends Controller
 
     public function index(Request $request)
     {
+        //Ordering
+        $order_by_field = $request->has('order_by')?$request->order_by:'id';
+        $order_by_direction = $request->has('direction')?$request->direction:'asc';
+
+        // Ensure the order is safe and matches one of the columns in the table
+        $order_by_field = in_array($order_by_field, $this->modelClass::getModel()->getConnection()->getSchemaBuilder()->getColumnListing($this->modelClass::getModel()->getTable())) ? $order_by_field : 'id';
+        $order_by_direction = in_array($order_by_direction, ['asc', 'desc']) ? $order_by_direction : 'asc';
+
+        //Per page results
         $per_page = min(config('discography.per_page_limit'), (int) $request->input('per_page', 15));
-        $model = $this->modelClass::paginate($per_page);
+        $model = $this->modelClass::orderBy($order_by_field, $order_by_direction)->paginate($per_page);
 
         return new $this->resourceClass($model); // Assuming $this->resourceClass is now pointing to your collection resource
     }
