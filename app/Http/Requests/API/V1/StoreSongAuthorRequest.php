@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\API\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAuthorRequest extends FormRequest
+class StoreSongAuthorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,8 @@ class UpdateAuthorRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'song_id' => 'required|integer|exists:App\Models\API\V1\Song,id|unique:App\Models\API\V1\SongAuthor,song_id,'.$this->song_id.',author_id,'.$this->author_id,
+            'author_id' => 'required|integer|exists:App\Models\API\V1\Author,id',
         ];
     }
 }

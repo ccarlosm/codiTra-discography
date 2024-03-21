@@ -1,6 +1,6 @@
 //Create index for the README file
 
-1. [About Discography](#about-discography)
+1. [About Discography](#about-discography-laravel-api)
 2. [Requirements](#requirements)
 3. [Installation](#installation)
 4. [Deployment](#deployment)
@@ -10,15 +10,37 @@
 
 ## About Discography Laravel API
 
-This repository is an API that allows users to CRUD artists and LPs and to list models resources.
-Database SQLite 3.
+This repository is an API that allows API users to CRUD artists, LPs, songs and authors and to list these resources with its relationships.
+Database SQLite 3. Diagram of database with relationships:
+
+```mermaid
+classDiagram
+    Artist <|-- LP
+    LP <|-- Song
+    Song <|--|> Author
+    class Artist{
+      +String name
+    }
+    class LP{
+      -String title
+      -String description
+    }
+    class Song{
+      -String title
+    }
+    class Author{
+      -String firstname
+      -String lastname
+    }
+```
+
 It is built using the Laravel framework v11:
 - Laravel Fortify for login/registration routes
 - Laravel Sanctum for API authentication
 - Laravel Sail for docker containers
 - PHPUnit for testing
 **No starter kit is used; the API is built from scratch.** 
-**Angular is chosen as the front-end JS framework because it is the bundle used in CodiTramuntana's current project, which is related to the job vacancy.**
+**Angular is chosen as the front-end JS framework because it is the bundle used in CodiTramuntana's current project, which is related to the job vacancy. It will be in a separated repository**
 
 ## Requirements
 
@@ -32,7 +54,7 @@ It is built using the Laravel framework v11:
 
 1. Clone the repository
 2. Run `install.sh` to install and start the docker containers with Laravel Sail
-2. Run `bootstrap.sh` to run migrations and seeders
+3. Run `bootstrap.sh` to run migrations and seeders
 
 ## Deployment
 
@@ -41,16 +63,21 @@ The API uses Laravel Sail to deploy in docker containers. To start the server, r
 ## Usage
 
 You can see a list of the routes with command: ./vendor/bin/sail artisan route:list
+Postman collection with the API routes in the repository: https://api.postman.com/collections/9809016-5840be70-6153-4ffa-8fac-901ea3385a56?access_key=PMAT-01HSGZGBE4Y7WDC330ABS4845B
+This repository is an API that allows API users to CRUD artists, LPs, songs and authors and to list these resources with its relationships.
+To load the relationships check the diagram provided in [About Discography](#about-discography-laravel-api) and add the query "&relationships=" to any route.
+For example, to list all artists with their LPs and songs, use the route `localhost:8080/api/artists?relationships=LPs.songs`
 
 The user created with the Database seeder has the following credentials:
 - name: Test User
 - email: test@example.com
 - password: 123456
+It was not necessary for the task to create a CRUD for application users, so it does not exist.
 
 ## Testing
 
 Run the tests with `./vendor/bin/sail test --parallel`
-The tests are set up in a github action to implement CI/CD in the API. See folder `.github/workflows` for more information.
+The tests are set up in a gitHub action to implement CI/CD in the API. See folder `.github/workflows` for more information.
 
 ## Comments
 
