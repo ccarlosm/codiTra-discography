@@ -25,5 +25,4 @@ class LoginTest extends TestCase
         // Assert the application authenticated the user
         $this->assertAuthenticated();
     }
-
 }

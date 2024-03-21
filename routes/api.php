@@ -10,5 +10,5 @@ Route::get('/user', function (Request $request) {
 // define a route named password.reset that returns true simply
 Route::post('/api/password/reset', function () {
     // This route doesn't need to return anything
-    return;
+
 })->name('password.reset');

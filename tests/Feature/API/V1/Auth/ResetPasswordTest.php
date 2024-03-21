@@ -15,7 +15,7 @@ class ResetPasswordTest extends TestCase
 
     public function testUserCanResetPassword()
     {
-        if (!Features::enabled(Features::resetPasswords())) {
+        if (! Features::enabled(Features::resetPasswords())) {
             $this->markTestSkipped('Password reset feature is not enabled.');
         }
 
@@ -37,6 +37,7 @@ class ResetPasswordTest extends TestCase
 
         Notification::assertSentTo($user, ResetPassword::class, function ($notification, $channels) use (&$token) {
             $token = $notification->token;
+
             return true;
         });
 
