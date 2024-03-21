@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use Illuminate\Http\Request; // Make sure to import the Request class
-use App\Http\Controllers\Controller; // Import the base controller class
+use App\Http\Controllers\Controller; // Make sure to import the Request class
+use Illuminate\Http\Request; // Import the base controller class
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller

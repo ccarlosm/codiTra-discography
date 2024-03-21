@@ -5,7 +5,6 @@ namespace Database\Factories\V1;
 use App\Models\V1\LP;
 use App\Models\V1\Song;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Log;
 
 /**
  * @extends Factory<Song>
@@ -22,7 +21,7 @@ class SongFactory extends Factory
 
         $lp = LP::inRandomOrder()->first();
 
-        if (!$lp) {
+        if (! $lp) {
             $lp = LP::factory()->create();
         }
 
