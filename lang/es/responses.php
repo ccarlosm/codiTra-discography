@@ -12,5 +12,5 @@ return [
     'list' => 'Detalles del recurso :object_type obtenidos exitosamente',
     'updated' => 'Recurso :object_type actualizado exitosamente',
     'deleted' => 'Recurso :object_type eliminado exitosamente',
-    "update_not_allowed" => "No se permite actualizar",
+    'update_not_allowed' => 'No se permite actualizar',
 ];

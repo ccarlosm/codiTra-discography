@@ -83,12 +83,12 @@ return Application::configure(basePath: dirname(__DIR__))
         /**
          * Error with method
          */
-//        $exceptions->render(function (MethodNotAllowedHttpException $e, Request $request) {
-//            return response()->json([
-//                'success' => false,
-//                'message' => 'Operation not found',
-//            ], 404);
-//        });
+        $exceptions->render(function (MethodNotAllowedHttpException $e, Request $request) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Operation not found',
+            ], 404);
+        });
 
         /**
          * For type hint errors
