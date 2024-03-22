@@ -14,7 +14,10 @@ class BaseResource extends JsonResource
      */
     public function toArray($request)
     {
-        $relations_array = request('relationships', $default = []);
+        $relations_array = request('relationships', $default = '');
+        //The relationships array is passed as a query parameter in the request but it will be a string
+        //Convert it to an array
+        $relations_array = explode(',', $relations_array);
 
         if (! empty($relations_array)) {
             $with = (array) $relations_array;
@@ -22,6 +25,7 @@ class BaseResource extends JsonResource
             $with = [];
         }
 
+        //Load relationships only when necessary
         $this->loadMissing($with);
 
         return parent::toArray($request);

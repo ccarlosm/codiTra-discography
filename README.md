@@ -2,7 +2,7 @@
 2. [Requirements](#requirements)
 3. [Installation](#installation)
 4. [Deployment](#deployment)
-5. [Usage](#usage)
+5. [API usage](#api-usage)
 6. [Comments](#comments)
 7. [License](#license)
 
@@ -58,13 +58,13 @@ It is built using the Laravel framework v11:
 
 The API uses Laravel Sail to deploy in docker containers. To start the server, run `./vendor/bin/sail up` (or `./vendor/bin/sail up -d` with docker desktop) in the root directory of the project. The API will be available at `localhost:8080`
 
-## Usage
+## API usage
 
 As stated in [About Discography](#about-discography-laravel-api), this repository is an API that allows API users to CRUD artists, LPs, songs and authors and to list these resources with its relationships.
 
-API Usage:
 - To load the relationships and fields for each API resource check the diagram provided in [About Discography](#about-discography-laravel-api) and add the query "relationships=" to any route. 
-  * For example, to list all artists with their LPs and songs, use the route `localhost:8080/api/artists?relationships=LPs.songs`
+  * For example, to list all artists with their LPs and songs, use the route `localhost:8080/api/artists?relationships=lps.songs`
+  * You can pass several relationships separated bya a comma. For example, to list all songs with their authors and lp use the route `localhost:8080/api/songs?relationships=lp,authors`
   * To order by a given field "order_by=title" in the route and the direction with "direction=asc" or "direction=desc". For example, to list all LPs ordered by title desc use the route `localhost:8080/api/LPs?order_by=title&direction=desc` 
   * To limit the number of results use the query "per_page=". For example, to list the first 5 songs use the route `localhost:8080/api/songs?per_page=5`
     In any case, there is a limit in the config file discography.php for the number of results per page set to 50.
