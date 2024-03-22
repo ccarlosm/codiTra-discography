@@ -10,7 +10,7 @@ class AppUpTest extends TestCase
     /**
      * A basic test example.
      */
-    public function applicationIsUp(): void
+    public function testApplicationIsUp(): void
     {
         $response = $this->get('/up');
 
