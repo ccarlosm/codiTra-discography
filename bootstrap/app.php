@@ -1,16 +1,15 @@
 <?php
 
 use App\Http\Middleware\API\V1\SetLocaleMiddleware;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Request;
-use Illuminate\Validation\UnauthorizedException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -34,15 +33,15 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions) {
 
-        //NOTE:Use the following exceptions only for production or your capacity to find BUGs will be diminished
+        //Use the following exceptions only for production or your capacity to find BUGs will be diminished
 
         /**
-         * Unauthorized exception
+         * Unauthenticated exception
          */
-        $exceptions->render(function (UnauthorizedException $e, Request $request) {
+        $exceptions->render(function (AuthenticationException $e, Request $request) {
             return response()->json([
                 'success' => false,
-                'message' => 'Unauthorized',
+                'message' => 'Unauthenticated',
             ], 401);
         });
 

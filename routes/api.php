@@ -7,7 +7,6 @@ use App\Http\Controllers\API\V1\LPController;
 use App\Http\Controllers\API\V1\SongAuthorController;
 use App\Http\Controllers\API\V1\SongController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +17,7 @@ Route::post('/api/password/reset')->name('password.reset');
 Route::post('/login', [LoginController::class, 'createToken']);
 
 //API Model Routes
-Route::group(['prefix' => 'v1', 'as' => 'api.v1.'], function () {
+Route::group(['prefix' => 'v1', 'as' => 'api.v1.', 'middleware' => 'auth:sanctum'], function () {
 
     //Return current authenticated user
     Route::get('/user', function (Request $request) {
@@ -39,4 +38,4 @@ Route::group(['prefix' => 'v1', 'as' => 'api.v1.'], function () {
 
     //SongAuthor
     Route::resource('song_authors', SongAuthorController::class);
-})->middleware('auth:sanctum');
+});
