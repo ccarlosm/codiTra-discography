@@ -26,6 +26,6 @@ class Song extends BaseModel
     //Relationship many to many through pivot table SongAuthor
     public function authors()
     {
-        return $this->belongsToMany('App\Models\V1\Author', 'song_author', 'song_id', 'author_id');
+        return $this->belongsToMany('App\Models\V1\Author', 'song_authors', 'song_id', 'author_id');
     }
 }

@@ -176,6 +176,12 @@ return [
         ],
     ],
 
+    'pivot_tables' => [
+        'author_id' => [
+            'unique' => 'The combination of song and author already exists and must be unique',
+        ],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes
