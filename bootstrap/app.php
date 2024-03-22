@@ -96,7 +96,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $exceptions->render(function (TypeError $e, Request $request) {
             return response()->json([
                 'success' => false,
-                'message' => 'Check your request',
+                'message' => 'Type error',
             ], 404);
         });
 

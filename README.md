@@ -85,6 +85,11 @@ LIMITING RESULTS
     * For example, to list the first 5 songs use the route `/api/songs?per_page=5`
       In any case, there is a limit in the config file discography.php for the number of results per page set to 50.
 
+FILTERING
+- Filtering is only implemented in artist resource, by name, as an example and for the requirements of the assignment.
+- To filter the artists by name, add the query "name=" to the route. 
+  * For example, to list all artists that contain "The Beatles" use the route `/api/artists?name=The Beatles`
+
 LOCALIZATION
 - Languages Spanish and English are included in the API for resource responses, auth, pagination, passwords and validation.
   * It would be easy to implement other localization files. For example, for exceptions creating an exceptions.php file in the corresponding language folder.
@@ -105,7 +110,7 @@ Functional tests for the API:
   * mailing
   * middleware for setting the locale
   * for Auth: login/logout/register/reset password (Laravel Fortify features)
-  * for routes in the API with "relationships", "order_by", "direction" and "per_page" queries
+  * for routes in the API with "relationships", filter by "name" in artist, "order_by", "direction" and "per_page" queries
   * for the controllers
 
 - Unit tests:
