@@ -22,7 +22,7 @@ class UpdateSongRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255|unique:App\Models\V1\Song,title,'.$this->song,
+            'title' => 'required|string|max:255|unique:App\Models\V1\Song,title,'.$this->song,
         ];
     }
 }
