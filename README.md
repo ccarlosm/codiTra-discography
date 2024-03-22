@@ -62,7 +62,7 @@ The API uses Laravel Sail to deploy in docker containers. To start the server, r
 
 As stated in [About Discography](#about-discography-laravel-api), this repository is an API that allows API users to CRUD artists, LPs, songs and authors and to list these resources with its relationships.
 You can see a list of the routes with command: ./vendor/bin/sail artisan route:list
-Postman collection with the API routes in the repository can be provided if needed.
+Postman collection with the API routes in the repository and documentation will be provided if needed.
 
 The user created with the Database seeder has the following credentials:
 - name: Test User
