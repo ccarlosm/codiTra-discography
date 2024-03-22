@@ -2,8 +2,8 @@
 
 namespace API\V1\Http\Controllers;
 
-use App\Models\V1\Author;
 use App\Models\User;
+use App\Models\V1\Author;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -25,7 +25,8 @@ class AuthorControllerTest extends TestCase
     }
 
     /** @test */
-    public function testStoreCreatesNewAuthorAndReturnsIt() {
+    public function testStoreCreatesNewAuthorAndReturnsIt()
+    {
         $user = User::factory()->create();
 
         $authorData = [
@@ -40,7 +41,8 @@ class AuthorControllerTest extends TestCase
     }
 
     /** @test */
-    public function testShowReturnsAuthor() {
+    public function testShowReturnsAuthor()
+    {
         $user = User::factory()->create();
         $author = Author::factory()->create();
 
@@ -67,7 +69,8 @@ class AuthorControllerTest extends TestCase
     }
 
     /** @test */
-    public function testDestroyDeletesAuthor() {
+    public function testDestroyDeletesAuthor()
+    {
         $user = User::factory()->create();
         $author = Author::factory()->create();
 

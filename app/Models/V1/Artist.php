@@ -9,8 +9,6 @@ class Artist extends BaseModel
 {
     use HasApiTokens, HasFactory;
 
-    protected $table = 'artists';
-
     /**
      * The attributes that are mass assignable.
      *

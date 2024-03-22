@@ -21,13 +21,13 @@ class CurrentUserTest extends TestCase
 
         // Assert: Check if the response has the correct structure and data
         $response->assertOk() // or $response->assertStatus(200) if you prefer
-        ->assertJson([
-            'success' => true,
-            'data' => [
-                'id' => $user->id,
-                'name' => $user->name,
-                'email' => $user->email,
-            ],
-        ]);
+            ->assertJson([
+                'success' => true,
+                'data' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                ],
+            ]);
     }
 }
