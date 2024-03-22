@@ -34,4 +34,5 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     //SongAuthor
     Route::resource('song_authors', SongAuthorController::class);
+
 });

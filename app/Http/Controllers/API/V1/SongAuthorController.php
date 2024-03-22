@@ -14,6 +14,6 @@ class SongAuthorController extends BaseController
 
     public function update(Request $request, $id)
     {
-        return $this->handleError('Not allowed to update', [], 403);
+        return $this->handleError(__('responses.update_not_allowed'), [], 403);
     }
 }
