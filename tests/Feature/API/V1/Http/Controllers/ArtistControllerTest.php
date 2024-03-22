@@ -19,11 +19,12 @@ class ArtistControllerTest extends TestCase
      *
      * @return void
      */
-    public function testIndexReturnListOfArtistsWithOrderDirectionAndPerPageLimit()
+    public function testIndexReturnListOfArtistsWithOrderDirectionNameFilterAndPerPageLimit()
     {
         $user = User::factory()->create();
         //Create 5 artists with the factory
-        Artist::factory()->count(5)->create();
+        Artist::factory()->create(['name' => 'Artist 1']);
+        Artist::factory()->count(4)->create();
 
         $response = $this->actingAs($user, 'sanctum')->getJson('/api/v1/artists');
 
@@ -35,11 +36,11 @@ class ArtistControllerTest extends TestCase
 
         //test the results were given by name in descending order
         $response->assertOk()
-            ->assertJsonPath('data.0.id', 5)
             ->assertJsonPath('data.4.id', 1)
             ->assertJsonPath('data.3.id', 2)
             ->assertJsonPath('data.2.id', 3)
             ->assertJsonPath('data.1.id', 4)
+            ->assertJsonPath('data.0.id', 5)
             ->assertJsonCount(5, 'data')
             ->assertJsonStructure([
                 'data' => [
@@ -50,6 +51,13 @@ class ArtistControllerTest extends TestCase
                     ],
                 ],
             ]);
+
+        //Test filter by name
+        $response = $this->actingAs($user, 'sanctum')->getJson('/api/v1/artists?name=Artist 1');
+
+        $response->assertOk()
+            ->assertJsonPath('data.0.name', 'Artist 1')
+            ->assertJsonCount(1, 'data');
 
         //test per_page
         $response = $this->actingAs($user, 'sanctum')->getJson('/api/v1/artists?per_page=2');
