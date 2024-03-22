@@ -61,23 +61,30 @@ The API uses Laravel Sail to deploy in docker containers. To start the server, r
 ## API usage
 
 As stated in [About Discography](#about-discography-laravel-api), this repository is an API that allows API users to CRUD artists, LPs, songs and authors and to list these resources with its relationships.
-
-- To load the relationships and fields for each API resource check the diagram provided in [About Discography](#about-discography-laravel-api) and add the query "relationships=" to any route. 
-  * For example, to list all artists with their LPs and songs, use the route `localhost:8080/api/artists?relationships=lps.songs`
-  * You can pass several relationships separated bya a comma. For example, to list all songs with their authors and lp use the route `localhost:8080/api/songs?relationships=lp,authors`
-  * To order by a given field "order_by=title" in the route and the direction with "direction=asc" or "direction=desc". For example, to list all LPs ordered by title desc use the route `localhost:8080/api/LPs?order_by=title&direction=desc` 
-  * To limit the number of results use the query "per_page=". For example, to list the first 5 songs use the route `localhost:8080/api/songs?per_page=5`
-    In any case, there is a limit in the config file discography.php for the number of results per page set to 50.
-  * Example for a request with all the queries: `localhost:8080/api/v1/artist?per_page=2&order_by=name&direction=desc&relationships=lps.songs.authors`
-
-- You can see a list of the routes with command: ./vendor/bin/sail artisan route:list
-  * Postman collection with the API routes in the repository can be provided if needed.
+You can see a list of the routes with command: ./vendor/bin/sail artisan route:list
+Postman collection with the API routes in the repository can be provided if needed.
 
 The user created with the Database seeder has the following credentials:
 - name: Test User
 - email: test@example.com
 - password: 123456
-It was not necessary for the task to create a CRUD for application users, so it does not exist.
+  It was not necessary for the task to create a CRUD for application users, so it does not exist.
+ 
+RELATIONSHIPS
+- To load the relationships and fields for each API resource check the diagram provided in [About Discography](#about-discography-laravel-api) and add the query "relationships=" to any route. 
+  * For example, to list all artists with their LPs and songs, use the route `localhost:8080/api/artists?relationships=lps.songs`
+  * You can pass several relationships separated bya a comma. For example, to list all songs with their authors and lp use the route `localhost:8080/api/songs?relationships=lp,authors`
+
+ORDERING
+- An order can be applied to the lists of resources with the query "order_by=" and "direction=".
+  *   For example, to list all LPs ordered by title desc use the route `localhost:8080/api/LPs?order_by=title&direction=desc`
+
+LIMITING RESULTS
+- An attribute "per_page=" can be added to limit the number of results per page.
+    * For example, to list the first 5 songs use the route `localhost:8080/api/songs?per_page=5`
+      In any case, there is a limit in the config file discography.php for the number of results per page set to 50.
+
+**Example for a request with all the queries: `localhost:8080/api/v1/artist?per_page=2&order_by=name&direction=desc&relationships=lps.songs.authors`**
 
 ## Testing
 
