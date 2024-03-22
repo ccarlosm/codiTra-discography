@@ -63,6 +63,7 @@ The API uses Laravel Sail to deploy in docker containers. To start the server, r
 As stated in [About Discography](#about-discography-laravel-api), this repository is an API that allows API users to CRUD artists, LPs, songs and authors and to list these resources with its relationships.
 You can see a list of the routes with command: ./vendor/bin/sail artisan route:list
 Postman collection with the API routes in the repository and documentation will be provided if needed.
+With the endpoints provided is easy to create a front-end application with Angular or any other JS framework with CRUD operations and LIST with relationships, ordering,...
 
 The user created with the Database seeder has the following credentials:
 - name: Test User
@@ -93,8 +94,24 @@ LOCALIZATION
 
 ## Testing
 
-Run the tests with `./vendor/bin/sail test --parallel`
+Run the tests with `./vendor/bin/sail test`
 The tests are set up in a gitHub action to implement CI/CD in the API. See folder `.github/workflows` for more information.
+
+TESTS INCLUDED
+Functional tests for the API:
+- Feature tests:
+  * health check
+  * exception handling
+  * mailing
+  * middleware for setting the locale
+  * for Auth: login/logout/register/reset password (Laravel Fortify features)
+  * for routes in the API with "relationships", "order_by", "direction" and "per_page" queries
+  * for the controllers
+
+- Unit tests:
+  * for the models: relationships and fillable attributes
+
+No tests are included for validation, as it is a simple task and the validation is already tested in the Laravel framework. But should be included in a real case scenario.
 
 ## Comments
 

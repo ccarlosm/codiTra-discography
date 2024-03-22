@@ -16,7 +16,7 @@ class ArtistControllerTest extends TestCase
      * IMPORTANT: This test is the only Feature test that tests the index method with relationships, order_by, direction and per_page parameters.
      * Should work as a reference for the other tests since it works in the same way for the other endpoints.
      * The relationships for each model have their own unit tests.
-     * 
+     *
      * @return void
      */
     public function testIndexReturnListOfArtistsWithOrderDirectionAndPerPageLimit()
