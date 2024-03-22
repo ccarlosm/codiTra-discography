@@ -2,6 +2,7 @@
 
 namespace Database\Factories\V1;
 
+use App\Models\V1\LP;
 use App\Models\V1\Song;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -17,8 +18,16 @@ class SongFactory extends Factory
      */
     public function definition(): array
     {
+
+        $lp = LP::inRandomOrder()->first();
+
+        if (! $lp) {
+            $lp = LP::factory()->create();
+        }
+
         return [
-            'title' => $this->faker->unique()->name(),
+            'title' => 'Song - '.$this->faker->sentence($nbWords = rand(3, 7), $variableNbWords = true),
+            'l_p_id' => $lp->id,
         ];
     }
 }

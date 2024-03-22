@@ -3,10 +3,9 @@
 namespace App\Models\V1;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
 
-class SongAuthor extends Model
+class SongAuthor extends BaseModel
 {
     use HasApiTokens, HasFactory;
 

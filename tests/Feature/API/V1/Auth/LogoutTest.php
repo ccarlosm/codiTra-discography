@@ -29,5 +29,4 @@ class LogoutTest extends TestCase
 
         $this->assertGuest();
     }
-
 }
