@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title')->default('')->index('l_p_s_title');
             $table->string('description')->default('');
-            $table->unsignedBigInteger('artist_id')->index('artist_id');
+            $table->unsignedBigInteger('artist_id')->nullable()->index('artist_id');
             $table->timestamps();
         });
 

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('songs', function (Blueprint $table) {
             $table->id();
             $table->string('title')->default('')->index('songs_title');
-            $table->unsignedBigInteger('l_p_id')->index('l_p_id');
+            $table->unsignedBigInteger('l_p_id')->nullable()->index('l_p_id');
             $table->timestamps();
         });
 

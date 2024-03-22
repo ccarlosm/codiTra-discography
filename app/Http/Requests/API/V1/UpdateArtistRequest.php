@@ -21,8 +21,6 @@ class UpdateArtistRequest extends FormRequest
      */
     public function rules(): array
     {
-        print_r($this->artist);
-
         return [
             'name' => 'required|string|max:255|unique:App\Models\V1\Artist,name,'.$this->artist,
             'description' => 'required|string|max:255',
