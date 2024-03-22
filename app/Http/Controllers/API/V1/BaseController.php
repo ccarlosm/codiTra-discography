@@ -45,14 +45,14 @@ class BaseController extends Controller
 
         $model = $this->modelClass::create($validated);
 
-        return $this->handleResponse(new $this->resourceClass($model), 'Resource created successfully');
+        return $this->handleResponse(new $this->resourceClass($model), __('responses.created', ['object_type' => $model->object_type]));
     }
 
     public function show($id)
     {
         $model = $this->modelClass::findOrFail($id);
 
-        return $this->handleResponse(new $this->resourceClass($model), 'Resource details fetched successfully');
+        return $this->handleResponse(new $this->resourceClass($model), __('responses.list', ['object_type' => $model->object_type]));
     }
 
     public function update(Request $request, $id)
@@ -62,7 +62,7 @@ class BaseController extends Controller
         $model = $this->modelClass::findOrFail($id);
         $model->update($validated);
 
-        return $this->handleResponse(new $this->resourceClass($model), 'Resource updated successfully');
+        return $this->handleResponse(new $this->resourceClass($model), __('responses.updated', ['object_type' => $model->object_type]));
     }
 
     public function destroy($id)
@@ -70,7 +70,7 @@ class BaseController extends Controller
         $model = $this->modelClass::findOrFail($id);
         $model->delete();
 
-        return $this->handleResponse(new DeletedDefaultResource($model), 'Resource deleted successfully');
+        return $this->handleResponse(new DeletedDefaultResource($model), __('responses.deleted', ['object_type' => $model->object_type]));
     }
 
     public function handleResponse($result, $msg, $code = 200): Response|JsonResponse

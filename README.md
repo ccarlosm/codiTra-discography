@@ -72,19 +72,24 @@ The user created with the Database seeder has the following credentials:
  
 RELATIONSHIPS
 - To load the relationships and fields for each API resource check the diagram provided in [About Discography](#about-discography-laravel-api) and add the query "relationships=" to any route. 
-  * For example, to list all artists with their LPs and songs, use the route `localhost:8080/api/artists?relationships=lps.songs`
-  * You can pass several relationships separated bya a comma. For example, to list all songs with their authors and lp use the route `localhost:8080/api/songs?relationships=lp,authors`
+  * For example, to list all artists with their LPs and songs, use the route `/api/artists?relationships=lps.songs`
+  * You can pass several relationships separated bya a comma. For example, to list all songs with their authors and lp use the route `/api/songs?relationships=lp,authors`
 
 ORDERING
 - An order can be applied to the lists of resources with the query "order_by=" and "direction=".
-  *   For example, to list all LPs ordered by title desc use the route `localhost:8080/api/LPs?order_by=title&direction=desc`
+  *   For example, to list all LPs ordered by title desc use the route `/api/LPs?order_by=title&direction=desc`
 
 LIMITING RESULTS
 - An attribute "per_page=" can be added to limit the number of results per page.
-    * For example, to list the first 5 songs use the route `localhost:8080/api/songs?per_page=5`
+    * For example, to list the first 5 songs use the route `/api/songs?per_page=5`
       In any case, there is a limit in the config file discography.php for the number of results per page set to 50.
 
-**Example for a request with all the queries: `localhost:8080/api/v1/artist?per_page=2&order_by=name&direction=desc&relationships=lps.songs.authors`**
+LOCALIZATION
+- Languages Spanish and English are included in the API for resource responses, auth, pagination, passwords and validation.
+  * It would be easy to implement other localization files. For example, for exceptions creating an exceptions.php file in the corresponding language folder.
+  * To use the feature, the Header 'locale' must be added to the query with the language code ('es' or 'en',  otherwise the locale will be set to 'en'). 
+
+**Example for a request with all the queries: `/api/v1/artist?per_page=2&order_by=name&direction=desc&relationships=lps.songs.authors`**
 
 ## Testing
 

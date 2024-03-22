@@ -7,11 +7,9 @@ use App\Http\Controllers\API\V1\LPController;
 use App\Http\Controllers\API\V1\SongAuthorController;
 use App\Http\Controllers\API\V1\SongController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
 
 // define a route named password.reset for Laravel Fortify needs. This route doesn't need to return anything
 Route::post('/api/password/reset')->name('password.reset');
@@ -21,6 +19,11 @@ Route::post('/login', [LoginController::class, 'createToken']);
 
 //API Model Routes
 Route::group(['prefix' => 'v1', 'as' => 'api.v1.'], function () {
+
+    //Return current authenticated user
+    Route::get('/user', function (Request $request) {
+        return response()->json(['success' => true, 'data' => Auth::user()]);
+    });
 
     //Artist
     Route::resource('artists', ArtistController::class);
@@ -36,4 +39,4 @@ Route::group(['prefix' => 'v1', 'as' => 'api.v1.'], function () {
 
     //SongAuthor
     Route::resource('song_authors', SongAuthorController::class);
-});
+})->middleware('auth:sanctum');
