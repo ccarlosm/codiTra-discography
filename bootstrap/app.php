@@ -55,7 +55,7 @@ return Application::configure(basePath: dirname(__DIR__))
          * Route not found
          */
         $exceptions->render(function (NotFoundHttpException $e, Request $request) {
-            return Response::apiV1(['message' => 'Route not found''], false, 404);
+            return Response::apiV1(['message' => 'Route not found'], false, 404);
         });
 
         /**
