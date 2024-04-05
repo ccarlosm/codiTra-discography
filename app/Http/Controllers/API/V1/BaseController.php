@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\API\V1\BaseResource;
 use App\Http\Resources\API\V1\DeletedDefaultResource;
 use App\Actions\Controllers\OrderBy;
-use App\Models\V1\BaseModel;
+use Illuminate\Support\Facades\Response as ResponseFacade;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -69,27 +69,9 @@ class BaseController extends Controller
         return $this->handleResponse(new DeletedDefaultResource($model), __('responses.deleted', ['object_type' => $model->object_type]));
     }
 
-    public function handleResponse($result, $msg, $code = 200): Response|JsonResponse
+    public function handleResponse($data, $success, $status = 200): Response|JsonResponse
     {
-        $res = [
-            'success' => true,
-            'data' => $result,
-            'message' => $msg,
-        ];
-
-        return response()->json($res, $code);
-    }
-
-    public function handleError($error, $errorMsg = [], $code = 404): Response|JsonResponse
-    {
-        $res = [
-            'success' => false,
-            'message' => $error,
-        ];
-        if (! empty($errorMsg)) {
-            $res['data'] = $errorMsg;
-        }
-
-        return response()->json($res, $code);
+        //Use Response macro from AppServiceProvider
+        return ResponseFacade::apiV1($data, $success, $status);
     }
 }

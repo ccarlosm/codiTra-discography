@@ -27,7 +27,9 @@ class ExceptionHandlerTest extends TestCase
         $response->assertStatus(404)
             ->assertJson([
                 'success' => false,
-                'message' => 'Route not found',
+                'data' => [
+                    'message' => 'Route not found'
+                ],
             ]);
     }
 
@@ -45,7 +47,9 @@ class ExceptionHandlerTest extends TestCase
         $response->assertStatus(404)
             ->assertJson([
                 'success' => false,
-                'message' => 'Bad relationship provided or not found',
+                'data' => [
+                    'message' => 'Bad relationship provided or not found'
+                ],
             ]);
     }
 }
