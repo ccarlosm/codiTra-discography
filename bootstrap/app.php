@@ -66,28 +66,28 @@ return Application::configure(basePath: dirname(__DIR__))
                 return Response::apiV1(['message' => 'Duplicate entry'], false, 409);
             }
 
-            return Response::apiV1(['message' => 'General error in DB query'], false, 500);
+            return Response::apiV1(['message' => 'General error in DB query'], false, 404);
         });
 
         /**
          * Error with method
          */
         $exceptions->render(function (MethodNotAllowedHttpException $e, Request $request) {
-            return Response::apiV1(['message' => 'Method not allowed'], false, 405);
+            return Response::apiV1(['message' => 'Method not allowed'], false, 404);
         });
 
         /**
          * For type hint errors
          */
         $exceptions->render(function (TypeError $e, Request $request) {
-            return Response::apiV1(['message' => 'Type hint error'], false, 500);
+            return Response::apiV1(['message' => 'Type hint error'], false, 404);
         });
 
         /**
          * For relationship errors
          */
         $exceptions->render(function (RelationNotFoundException $e, Request $request) {
-            return Response::apiV1(['message' => 'Relationship error'], false, 500);
+            return Response::apiV1(['message' => 'Relationship error'], false, 404);
         });
 
     })->create();
