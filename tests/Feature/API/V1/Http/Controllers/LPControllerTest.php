@@ -3,6 +3,7 @@
 namespace API\V1\Http\Controllers;
 
 use App\Models\User;
+use App\Models\V1\Artist;
 use App\Models\V1\LP;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -77,5 +78,26 @@ class LPControllerTest extends TestCase
         $this->actingAs($user, 'sanctum')->deleteJson("/api/v1/lps/{$lp->id}");
 
         $this->assertDatabaseMissing('l_p_s', ['id' => $lp->id]);
+    }
+
+    /** @test */
+    public function testIndexReturnsListOfLpsFilteredByArtistName()
+    {
+        $user = User::factory()->create();
+        $artist = Artist::factory()->create([
+            'name' => 'Artist Name',
+        ]);
+        LP::factory()->count(1)->create(['artist_id' => $artist->id]);
+        $different_artist = Artist::factory()->create([
+            'name' => 'Different Artist',
+        ]);
+        LP::factory()->count(3)->create(['artist_id' => $different_artist->id]);
+
+        $response = $this->actingAs($user, 'sanctum')->getJson('/api/v1/lps?relationships=artist&artist_name=' . $artist->name);
+        //Assert the response has the artist name
+        $response->assertOk()
+            ->assertJsonFragment(['name' => $artist->name]);
+        //Assert the response returns the only record with the artist name
+        $response->assertJsonCount(1, 'data');
     }
 }
