@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\API\V1\AlwayAcceptJson;
 use App\Http\Middleware\API\V1\SetLocaleMiddleware;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\RelationNotFoundException;
@@ -38,6 +39,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         //Localization middleware
         $middleware->append(SetLocaleMiddleware::class);
+        $middleware->prependToGroup('api', AlwayAcceptJson::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
 
