@@ -24,6 +24,7 @@ class UpdateLPRequest extends FormRequest
         return [
             'title' => 'required|string|max:255|unique:App\Models\V1\LP,title,'.$this->lp,
             'description' => 'required|string|max:255',
+            'artist_id' => 'nullable|integer|exists:App\Models\V1\Artist,id',
         ];
     }
 }

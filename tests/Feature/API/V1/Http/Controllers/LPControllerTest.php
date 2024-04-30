@@ -29,10 +29,12 @@ class LPControllerTest extends TestCase
     public function testStoreCreatesNewLPAndReturnsIt()
     {
         $user = User::factory()->create();
+        $artist = Artist::factory()->create();
 
         $lpData = [
             'title' => 'New LP',
             'description' => 'LP description',
+            'artist_id' => $artist->id,
         ];
 
         $this->actingAs($user, 'sanctum')->postJson('/api/v1/lps', $lpData);
@@ -58,9 +60,12 @@ class LPControllerTest extends TestCase
     {
         $user = User::factory()->create();
         $lp = LP::factory()->create();
+        $artist = Artist::factory()->create();
+
         $updatedData = [
             'title' => 'Updated LP',
             'description' => 'Updated LP description',
+            'artist_id' => $artist->id,
         ];
 
         $this->actingAs($user, 'sanctum')->putJson("/api/v1/lps/{$lp->id}", $updatedData);
