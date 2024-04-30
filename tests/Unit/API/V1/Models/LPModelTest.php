@@ -32,6 +32,6 @@ class LPModelTest extends TestCase
     public function testFillable()
     {
         $lp = new LP();
-        $this->assertEquals(['title', 'description'], $lp->getFillable());
+        $this->assertEquals(['title', 'description', 'artist_id'], $lp->getFillable());
     }
 }
