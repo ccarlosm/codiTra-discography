@@ -24,6 +24,7 @@ class StoreLPRequest extends FormRequest
         return [
             'title' => 'required|string|max:255|unique:App\Models\V1\LP',
             'description' => 'required|string|max:255',
+            'artist_id' => 'nullable|integer|exists:App\Models\V1\Artist,id',
         ];
     }
 }
