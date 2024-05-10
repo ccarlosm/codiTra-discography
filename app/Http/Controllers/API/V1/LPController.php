@@ -28,7 +28,7 @@ class LPController extends BaseController
         if ($request->filled('artist_name')) {
             $query->where(function ($query) use ($request) {
                 $query->whereHas('artist', function ($query) use ($request) {
-                    $query->where('name', 'like', '%' . $request->artist_name . '%');
+                    $query->where('name', 'like', '%'.$request->artist_name.'%');
                 });
             });
         }

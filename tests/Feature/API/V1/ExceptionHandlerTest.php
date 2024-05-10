@@ -28,7 +28,7 @@ class ExceptionHandlerTest extends TestCase
             ->assertJson([
                 'success' => false,
                 'data' => [
-                    'message' => 'Route not found'
+                    'message' => 'Route not found',
                 ],
             ]);
     }
@@ -48,7 +48,7 @@ class ExceptionHandlerTest extends TestCase
             ->assertJson([
                 'success' => false,
                 'data' => [
-                    'message' => 'Bad relationship provided or not found'
+                    'message' => 'Bad relationship provided or not found',
                 ],
             ]);
     }

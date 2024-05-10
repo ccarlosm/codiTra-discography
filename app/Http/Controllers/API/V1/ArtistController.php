@@ -26,7 +26,7 @@ class ArtistController extends BaseController
 
         // If a name is provided in the request, add a where clause to filter by name
         if ($request->filled('name')) {
-            $query->where('name', 'like', '%' . $request->name . '%');
+            $query->where('name', 'like', '%'.$request->name.'%');
         }
 
         // Execute the query with pagination
