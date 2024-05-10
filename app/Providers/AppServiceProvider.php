@@ -21,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         //Macro for responses in API/V1
-        Response::macro('apiV1', function ($data, $success= true, $status = 200) {
+        Response::macro('apiV1', function ($data, $success = true, $status = 200) {
             return Response::json([
                 'success' => $success,
                 'data' => $data,

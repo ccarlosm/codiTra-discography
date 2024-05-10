@@ -17,16 +17,25 @@ class LogoutTest extends TestCase
             'password' => bcrypt('password2'),
         ]);
 
-        $this->post('/api/login', [
-            'email' => 'john2@example.com',
-            'password' => 'password2',
-        ]);
+        //Assert there are no tokens in the database
+        $this->assertDatabaseCount('personal_access_tokens', 0);
 
-        // Assert the application authenticated the user
-        $this->assertAuthenticated();
+        // Create a real token for the user
+        $token = $user->createToken('TestToken')->plainTextToken;
 
-        $this->actingAs($user)->post('/api/logout');
+        // Split the token to get the token's ID part
+        $tokenParts = explode('|', $token);
+        $tokenID = $tokenParts[0];
 
-        $this->assertGuest();
+        //Assert there is that 1 token in the database
+        $this->assertDatabaseCount('personal_access_tokens', 1);
+
+        // Use the token for subsequent requests
+        $this->withHeaders([
+            'Authorization' => 'Bearer '.$token,
+        ])->post('/api/logout');
+
+        //Assert there are no tokens in the database
+        $this->assertDatabaseCount('personal_access_tokens', 0);
     }
 }

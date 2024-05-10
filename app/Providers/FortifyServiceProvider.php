@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Contracts\LoginResponse;
+use Laravel\Fortify\Contracts\LogoutResponse;
 use Laravel\Fortify\Contracts\RegisterResponse;
 use Laravel\Fortify\Fortify;
 
@@ -55,6 +56,23 @@ class FortifyServiceProvider extends ServiceProvider
                 ]);
             }
         });
+
+        $this->app->instance(LogoutResponse::class, new class implements LogoutResponse
+        {
+            public function toResponse($request)
+            {
+                //Get the created user (authenticated for Laravel Fortify) and delete current token
+                if ($request->user() && $request->user()->currentAccessToken()) {
+                    $request->user()->currentAccessToken()->delete();
+                }
+
+                return response()->json([
+                    'success' => true,
+                    'data' => ['email' => $request->user()->email],
+                    'message' => 'User registered successfully',
+                ]);
+            }
+        });
     }
 
     /**
@@ -66,6 +84,7 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
+        Fortify::ignoreRoutes();
 
         RateLimiter::for('login', function (Request $request) {
             $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());

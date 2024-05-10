@@ -98,7 +98,7 @@ class LPControllerTest extends TestCase
         ]);
         LP::factory()->count(3)->create(['artist_id' => $different_artist->id]);
 
-        $response = $this->actingAs($user, 'sanctum')->getJson('/api/v1/lps?relationships=artist&artist_name=' . $artist->name);
+        $response = $this->actingAs($user, 'sanctum')->getJson('/api/v1/lps?relationships=artist&artist_name='.$artist->name);
         //Assert the response has the artist name
         $response->assertOk()
             ->assertJsonFragment(['name' => $artist->name]);

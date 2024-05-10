@@ -22,5 +22,4 @@ class OrderBy
 
         return $modelClass::orderBy($order_by_field, $order_by_direction);
     }
-
 }
